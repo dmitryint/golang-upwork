@@ -1,5 +1,11 @@
 github.com/davecgh/go-spew v1.1.0 h1:ZDRjVQ15GmhC3fiQ8ni8+OwkZQO4DARzQgrnXU1Liz8=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
+github.com/mnovozhylov/oauth v0.0.0-20190507082605-322a3a82211c h1:CfnbCmbjgciBDUcFE4Ot8UWBTv3WEszepNMwRnx86Cg=
+github.com/mnovozhylov/oauth v0.0.0-20190507082605-322a3a82211c/go.mod h1:We9IO5yIS79vfXDz44qeTic8NQSSlChWiK4UvaFxOIQ=
+github.com/mnovozhylov/randstr v1.0.2 h1:QGduZmwPdISXdXvHCTpPic8+3Xhme11GSwtr+BKcbJg=
+github.com/mnovozhylov/randstr v1.0.2/go.mod h1:IglDt9BycS758Wn7HWudKgdVjBu9zluFH568Q/HpzfM=
+github.com/mnovozhylov/randstr v1.0.3-0.20190104161604-ac5b2d62bffb h1:kNPJKurDn213lzyMERVX3Y8zYr2wzv/Bs8VFk4IBjoY=
+github.com/mnovozhylov/randstr v1.0.3-0.20190104161604-ac5b2d62bffb/go.mod h1:IglDt9BycS758Wn7HWudKgdVjBu9zluFH568Q/HpzfM=
 github.com/mrjones/oauth v0.0.0-20190623134757-126b35219450 h1:j2kD3MT1z4PXCiUllUJF9mWUESr9TWKS7iEKsQ/IipM=
 github.com/mrjones/oauth v0.0.0-20190623134757-126b35219450/go.mod h1:skjdDftzkFALcuGzYSklqYd8gvat6F1gZJ4YPVbkZpM=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
@@ -7,6 +13,8 @@ github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZN
 github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=
 github.com/stretchr/testify v1.6.1 h1:hDPOHmpOpP40lSULcqw7IrRb/u7w6RpDC9399XyoNd0=
 github.com/stretchr/testify v1.6.1/go.mod h1:6Fq8oRcR53rry900zMqJjRRixrwX3KX962/h/Wwjteg=
+github.com/thanhpk/baseconv v0.0.0-20171101171330-758d96e93935 h1:NrLlMMveF+rHR92yIdkt9Lt0+t/igYQzJ5x/iIoiXpQ=
+github.com/thanhpk/baseconv v0.0.0-20171101171330-758d96e93935/go.mod h1:G9VOXNoH/x8lWvISiGBwKLlYJhFSnBITI+tPuveHS4E=
 gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405/go.mod h1:Co6ibVJAznAaIkqp8huTwlJQCZ016jof/cbN4VW5Yz0=
 gopkg.in/yaml.v3 v3.0.0-20200313102051-9f266ea9e77c h1:dUUwHk2QECo/6vqA44rthZ8ie2QXMNeKRTHCNY2nXvo=
 gopkg.in/yaml.v3 v3.0.0-20200313102051-9f266ea9e77c/go.mod h1:K4uyk7z7BCEPqu6E+C64Yfv1cQ7kz7rIZviUmN+EgEM=

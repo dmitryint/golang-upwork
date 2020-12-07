@@ -56,6 +56,7 @@ import (
 	"strings"
 	"sync"
 	"time"
+	"github.com/mnovozhylov/randstr"
 )
 
 const (
@@ -806,15 +807,19 @@ func getBody(request *http.Request) ([]byte, error) {
 	return originalBody, nil
 }
 
-func parseBody(request *http.Request) (map[string][]string, error) {
-	userParams := map[string][]string{}
+func parseBody(request *http.Request) (map[string]string, error) {
+	userParams := map[string]string{}
 
 	// TODO(mrjones): factor parameter extraction into a separate method
 	if request.Header.Get("Content-Type") !=
 		"application/x-www-form-urlencoded" {
 		// Most of the time we get parameters from the query string:
 		for k, vs := range request.URL.Query() {
-			userParams[k] = vs
+			if len(vs) != 1 {
+				return nil, fmt.Errorf("Must have exactly one value per param")
+			}
+
+			userParams[k] = vs[0]
 		}
 	} else {
 		// x-www-form-urlencoded parameters come from the body instead:
@@ -829,21 +834,24 @@ func parseBody(request *http.Request) (map[string][]string, error) {
 		}
 
 		for k, vs := range params {
-			userParams[k] = vs
+			if len(vs) != 1 {
+				return nil, fmt.Errorf("Must have exactly one value per param")
+			}
+
+			userParams[k] = vs[0]
 		}
 	}
 
 	return userParams, nil
 }
 
-func paramsToSortedPairs(params map[string][]string) pairs {
+func paramsToSortedPairs(params map[string]string) pairs {
 	// Sort parameters alphabetically
-	paramPairs := pairs([]pair{})
-
-	for key, values := range params {
-		for _, value := range values {
-			paramPairs = append(paramPairs, pair{key: key, value: value})
-		}
+	paramPairs := make(pairs, len(params))
+	i := 0
+	for key, value := range params {
+		paramPairs[i] = pair{key: key, value: value}
+		i++
 	}
 	sort.Sort(paramPairs)
 
@@ -1064,7 +1072,7 @@ func (c *Consumer) baseParams(consumerKey string, additionalParams map[string]st
 	params.Add(VERSION_PARAM, OAUTH_VERSION)
 	params.Add(SIGNATURE_METHOD_PARAM, c.signer.SignatureMethod())
 	params.Add(TIMESTAMP_PARAM, strconv.FormatInt(c.clock.Seconds(), 10))
-	params.Add(NONCE_PARAM, strconv.FormatInt(c.nonceGenerator.Int63(), 10))
+	params.Add(NONCE_PARAM, strconv.FormatInt(c.nonceGenerator.Int63(), 10) + "." + randstr.String(8))
 	params.Add(CONSUMER_KEY_PARAM, consumerKey)
 	for key, value := range additionalParams {
 		params.Add(key, value)

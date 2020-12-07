@@ -23,7 +23,7 @@ import (
 	"net/url"
 	"strings"
 
-	"github.com/mrjones/oauth" // this is a forked dependency, to avoid unexpected behavior because of any changes
+	"github.com/mnovozhylov/oauth" // this is a forked dependency, to avoid unexpected behavior because of any changes
 )
 
 // Define end points
