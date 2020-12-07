@@ -15,38 +15,38 @@
 package snapshot
 
 import (
-    "net/http"
-    "github.com/upwork/golang-upwork/api"
+	"github.com/dmitryint/golang-upwork/api"
+	"net/http"
 )
 
 const (
-    EntryPoint = "api"
+	EntryPoint = "api"
 )
 
 type a struct {
-    client api.ApiClient
+	client api.ApiClient
 }
 
 // Constructor
-func New(c api.ApiClient) (a) {
-    var r a
-    c.SetEntryPoint(EntryPoint)
-    r.client = c
+func New(c api.ApiClient) a {
+	var r a
+	c.SetEntryPoint(EntryPoint)
+	r.client = c
 
-    return r
+	return r
 }
 
 // Get snapshot info by specific contract
 func (r a) GetByContract(contractId string, ts string) (*http.Response, []byte) {
-    return r.client.Get("/team/v3/snapshots/contracts/" + contractId + "/" + ts, nil)
+	return r.client.Get("/team/v3/snapshots/contracts/"+contractId+"/"+ts, nil)
 }
 
 // Update snapshot by specific contract
 func (r a) UpdateByContract(contractId string, ts string, params map[string]string) (*http.Response, []byte) {
-    return r.client.Post("/team/v3/snapshots/contracts/" + contractId + "/" + ts, params)
+	return r.client.Post("/team/v3/snapshots/contracts/"+contractId+"/"+ts, params)
 }
 
 // Delete snapshot by specific contract
 func (r a) DeleteByContract(contractId string, ts string) (*http.Response, []byte) {
-    return r.client.Delete("/team/v3/snapshots/contracts/" + contractId + "/" + ts, nil)
+	return r.client.Delete("/team/v3/snapshots/contracts/"+contractId+"/"+ts, nil)
 }

@@ -15,78 +15,78 @@
 package messages
 
 import (
-    "net/http"
-    "github.com/upwork/golang-upwork/api"
+	"github.com/dmitryint/golang-upwork/api"
+	"net/http"
 )
 
 const (
-    EntryPoint = "api"
+	EntryPoint = "api"
 )
 
 type a struct {
-    client api.ApiClient
+	client api.ApiClient
 }
 
 // Constructor
-func New(c api.ApiClient) (a) {
-    var r a
-    c.SetEntryPoint(EntryPoint)
-    r.client = c
+func New(c api.ApiClient) a {
+	var r a
+	c.SetEntryPoint(EntryPoint)
+	r.client = c
 
-    return r
+	return r
 }
 
 // Retrieve rooms information
 func (r a) GetRooms(company string, params map[string]string) (*http.Response, []byte) {
-    return r.client.Get("/messages/v3/" + company + "/rooms", params)
+	return r.client.Get("/messages/v3/"+company+"/rooms", params)
 }
 
 // Get a specific room information
 func (r a) GetRoomDetails(company string, roomId string, params map[string]string) (*http.Response, []byte) {
-    return r.client.Get("/messages/v3/" + company + "/rooms/" + roomId, params)
+	return r.client.Get("/messages/v3/"+company+"/rooms/"+roomId, params)
 }
 
 // Get messages from a specific room
 func (r a) GetRoomMessages(company string, roomId string, params map[string]string) (*http.Response, []byte) {
-    return r.client.Get("/messages/v3/" + company + "/rooms/" + roomId + "/stories", params)
+	return r.client.Get("/messages/v3/"+company+"/rooms/"+roomId+"/stories", params)
 }
 
 // Get a specific room by offer ID
 func (r a) GetRoomByOffer(company string, offerId string, params map[string]string) (*http.Response, []byte) {
-    return r.client.Get("/messages/v3/" + company + "/rooms/offers/" + offerId, params)
+	return r.client.Get("/messages/v3/"+company+"/rooms/offers/"+offerId, params)
 }
 
 // Get a specific room by application ID
 func (r a) GetRoomByApplication(company string, applicationId string, params map[string]string) (*http.Response, []byte) {
-    return r.client.Get("/messages/v3/" + company + "/rooms/applications/" + applicationId, params)
+	return r.client.Get("/messages/v3/"+company+"/rooms/applications/"+applicationId, params)
 }
 
 // Get a specific room by contract ID
 func (r a) GetRoomByContract(company string, contractId string, params map[string]string) (*http.Response, []byte) {
-    return r.client.Get("/messages/v3/" + company + "/rooms/contracts/" + contractId, params)
+	return r.client.Get("/messages/v3/"+company+"/rooms/contracts/"+contractId, params)
 }
 
 // Create a new room
 func (r a) CreateRoom(company string, params map[string]string) (*http.Response, []byte) {
-    return r.client.Post("/messages/v3/" + company + "/rooms", params)
+	return r.client.Post("/messages/v3/"+company+"/rooms", params)
 }
 
 // Send a message to a room
 func (r a) SendMessageToRoom(company string, roomId string, params map[string]string) (*http.Response, []byte) {
-    return r.client.Post("/messages/v3/" + company + "/rooms/" + roomId + "/stories", params)
+	return r.client.Post("/messages/v3/"+company+"/rooms/"+roomId+"/stories", params)
 }
 
 // Send a message to a batch of rooms
 func (r a) SendMessageToRooms(company string, params map[string]string) (*http.Response, []byte) {
-    return r.client.Post("/messages/v3/" + company + "/stories/batch", params)
+	return r.client.Post("/messages/v3/"+company+"/stories/batch", params)
 }
 
 // Update a room settings
 func (r a) UpdateRoomSettings(company string, roomId string, username string, params map[string]string) (*http.Response, []byte) {
-    return r.client.Put("/messages/v3/" + company + "/rooms/" + roomId + "/users/" + username, params)
+	return r.client.Put("/messages/v3/"+company+"/rooms/"+roomId+"/users/"+username, params)
 }
 
 // Update the metadata of a room
 func (r a) UpdateRoomMetadata(company string, roomId string, params map[string]string) (*http.Response, []byte) {
-    return r.client.Put("/messages/v3/" + company + "/rooms/" + roomId, params)
+	return r.client.Put("/messages/v3/"+company+"/rooms/"+roomId, params)
 }

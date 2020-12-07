@@ -60,7 +60,7 @@ for applications that are not web-based applications.
 
 ## Installation
 1.
-Get `go get -u github.com/upwork/golang-upwork/api`
+Get `go get -u github.com/dmitryint/golang-upwork/api`
 
 2.
 Open `myapp.go` and type the consumerKey and consumerSecret that you previously got from the API Center,
